@@ -1,0 +1,9 @@
+.spinner {
+    background: url('../spinner.gif') no-repeat center center;
+    height:50px;
+}
+
+.plot {
+    border:  solid 1px;
+    margin: 5px;
+}
