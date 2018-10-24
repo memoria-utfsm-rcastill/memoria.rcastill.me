@@ -194,10 +194,11 @@ function prepareSharedSensorData(julio, rdfData, label) {
       arrow.css('-moz-transform', `rotate(${dir + 90}deg)`);
       arrow.css('-o-transform', `rotate(${dir + 90}deg)`);
       arrow.css('-ms-transform', `rotate(${dir + 90}deg)`);
-      wndDir.html(`<b>${ts}</b> ${dir}`);
+      wndDir.html(`<b>${ts}</b> ${dir}&#176;`);
     }
   });
 
   await plot;
   $('#memviz .spinner:first').hide();
+  $('#compass-container').show();
 })();
