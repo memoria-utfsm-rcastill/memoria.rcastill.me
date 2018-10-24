@@ -7,3 +7,37 @@
     border:  solid 1px;
     margin: 5px;
 }
+
+#compass-container {
+    position: fixed;
+    top: 280px;
+    right: -100px;
+    transform: scale(.3);
+}
+
+#compass {
+    width: 380px;
+    height: 380px;
+    background-image:url('http://i.imgur.com/44nyA.jpg');
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#arrow {
+    width: 280px;
+    height: 20px;
+    background-color:#F00;
+    position: absolute;
+    top: 180px;
+    left: 50px;
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    -ms-transform:rotate(0deg);
+  
+    -moz-transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}

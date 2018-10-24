@@ -37,6 +37,7 @@ function prepareSharedSensorData(julio, rdfData, label) {
   let wildfiresZ1 = await (await fetch('wildfiresZ1.json')).json();
   let wildfiresZ2 = await (await fetch('wildfiresZ2.json')).json();
   let wildfiresZ3 = await (await fetch('wildfiresZ3.json')).json();
+  let wndDirMap = await (await fetch('wnd_dir.json')).json();
 
   // Sort wildfires
   wildfiresZ1.sort((a, b) => new Date(a.start) - new Date(b.start));
@@ -179,6 +180,22 @@ function prepareSharedSensorData(julio, rdfData, label) {
       range: [0, 100]
     },
     height: 500
+  });
+
+  // Bind hover
+  let memviz = document.getElementById('memviz');
+  let wndDir = $('#wnddir');
+  let arrow = $("#arrow");
+  memviz.on('plotly_hover', data => {
+    let ts = `${data.points[0].x}:00`;
+    let dir = wndDirMap[ts];
+    if (dir !== undefined) {
+      arrow.css('-webkit-transform', `rotate(${dir + 90}deg)`);
+      arrow.css('-moz-transform', `rotate(${dir + 90}deg)`);
+      arrow.css('-o-transform', `rotate(${dir + 90}deg)`);
+      arrow.css('-ms-transform', `rotate(${dir + 90}deg)`);
+      wndDir.html(`<b>${ts}</b> ${dir}`);
+    }
   });
 
   await plot;
