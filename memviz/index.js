@@ -31,13 +31,13 @@ function prepareSharedSensorData(julio, rdfData, label) {
 }
 
 (async () => {
-  let julio = await (await fetch('julio.json')).json();
-  let rdf = await (await fetch('rdf.json')).json();
-  let rdfData = await (await fetch('data.rdf.json')).json();
-  let wildfiresZ1 = await (await fetch('wildfiresZ1.json')).json();
-  let wildfiresZ2 = await (await fetch('wildfiresZ2.json')).json();
-  let wildfiresZ3 = await (await fetch('wildfiresZ3.json')).json();
-  let wndDirMap = await (await fetch('wnd_dir.json')).json();
+  let julio = await (await fetch('data/julio.json')).json();
+  let rdf = await (await fetch('data/rdf.json')).json();
+  let rdfData = await (await fetch('data/data.rdf.json')).json();
+  let wildfiresZ1 = await (await fetch('data/wildfiresZ1.json')).json();
+  let wildfiresZ2 = await (await fetch('data/wildfiresZ2.json')).json();
+  let wildfiresZ3 = await (await fetch('data/wildfiresZ3.json')).json();
+  let wndDirMap = await (await fetch('data/wnd_dir.json')).json();
 
   // Sort wildfires
   wildfiresZ1.sort((a, b) => new Date(a.start) - new Date(b.start));
