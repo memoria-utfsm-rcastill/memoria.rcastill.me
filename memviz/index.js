@@ -32,6 +32,8 @@ function prepareSharedSensorData(julio, rdfData, label) {
 
 (async () => {
   let julio = await (await fetch('data/julio.json')).json();
+  let julioPse = await (await fetch('data/julio_pse.json')).json();
+  let julioOriginal = await (await fetch('data/julio_original.json')).json();
   let rdf = await (await fetch('data/rdf.json')).json();
   let rdfData = await (await fetch('data/data.rdf.json')).json();
   let wildfiresZ1 = await (await fetch('data/wildfiresZ1.json')).json();
@@ -86,6 +88,22 @@ function prepareSharedSensorData(julio, rdfData, label) {
     name: "Julio's index",
     type: 'scatter'
   };
+
+  // Julio's index using PSE (rdf) for draught calculation
+  let julioPseTrace = {
+    x: julioPse.map(doc => doc.ts),
+    y: julioPse.map(doc => doc.julio),
+    name: "Julio's index (PSE)",
+    type: 'scatter'
+  };
+
+  // Julio's index using original table for draught calculation
+  let julioOriginalTrace = {
+    x: julioOriginal.map(doc => doc.ts),
+    y: julioOriginal.map(doc => doc.julio),
+    name: "Julio's index (original)",
+    type: 'scatter'
+  }
 
   // Risco do Fogo, complex
   let rfTrace = {
@@ -166,6 +184,8 @@ function prepareSharedSensorData(julio, rdfData, label) {
     windTrace,
     precipitationTrace,
     julioTrace,
+    julioPseTrace,
+    julioOriginalTrace,
     rfTrace,
     rbTrace,
     pseTrace,
